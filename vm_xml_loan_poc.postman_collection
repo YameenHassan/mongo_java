@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "914d6254-557c-413f-a789-862477bb81c6",
+		"name": "xml_loan_poc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<root>\r\n\t<user>\r\n      <user_name>ali</user_name>\r\n      <password>yameen1</password>\r\n  </user>\r\n</root>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/register",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<root>\r\n\t<user>\r\n      <user_name>ali</user_name>\r\n      <password>yameen1</password>\r\n  </user>\r\n</root>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/login",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add loan",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7e91eb58-8804-4ca1-8bc5-4ef6696745ed",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<root>\r\n  <loan>\r\n    <loan_number>1234567811</loan_number>\r\n    <customer_id>6ec16d8a-2ee1-4029-ad9a-63af42cae4e5</customer_id>\r\n    <requested_amount>1500</requested_amount>\r\n    <created_by>8f55271c-b124-11e4-9566-0abcc8df89dc</created_by>\r\n    <branch_id>1ffa8306-8f4e-11e4-bb7a-0abcc8df89dc</branch_id>\r\n    <loan_category>AGRI</loan_category>\r\n    <tenure>3 years</tenure>\r\n    <estimated_repayment_date>2017-06-01</estimated_repayment_date>\r\n    <created_date>2016-05-17T11:23:43Z</created_date>\r\n    <updated_by>8f55271c-b124-11e4-9566-0abcc8df89dc</updated_by>\r\n    <status>PENDING</status>\r\n    <approved_amount>1000</approved_amount>\r\n    <disbursed_amount>1000</disbursed_amount>\r\n  </loan>\r\n</root>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/add",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loan number",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7e91eb58-8804-4ca1-8bc5-4ef6696745ed",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "loan_",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/find?loan_number=123456789",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"find"
+					],
+					"query": [
+						{
+							"key": "loan_number",
+							"value": "123456789"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update loan with patch",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9bf336d0-c33c-4a30-89d6-3be98f7eb421",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<root>\r\n  <loan>\r\n    <loan_number>12345678</loan_number>\r\n    <requested_amount>1500</requested_amount>\r\n    <tenure>3 years</tenure>\r\n    <updated_by>8f55271c-b124-11e4-9566-0abcc8df89dc</updated_by>\r\n    <status>Rejected</status>\r\n    <approved_amount>1000</approved_amount>\r\n    <disbursed_amount>1000</disbursed_amount>\r\n  </loan>\r\n</root>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/update",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all loans",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7e91eb58-8804-4ca1-8bc5-4ef6696745ed",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.17.29:7900/loan/v1/findAll",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"17",
+						"29"
+					],
+					"port": "7900",
+					"path": [
+						"loan",
+						"v1",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
